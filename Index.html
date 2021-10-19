@@ -1,0 +1,50 @@
+<!-- Code by Me -->
+<html>
+  <head>
+  <title>Welcome</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" type="text/css" href="static/mazing.css" />
+  </head>
+  <body>
+    <div
+      class="border border-left-0 border-right-0 border-top-0 p-4 text-center w-100"
+    >
+      <h3>Welcome to the Maze Game</h3>
+    </div>
+
+    <div class="text-center pt-4">
+      <h4>Please Enter your Username to start the game!</h4>
+      <form action="Initial.html" onsubmit="onClick()">
+        <div class="input-group mb-4 w-25 m-auto pt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Username</span>
+          </div>
+          <input
+            required
+            type="text"
+            id="input"
+            class="form-control"
+            placeholder="Username"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <button type="submit" class="btn btn-info mt-4">Start Playing!</button>
+      </form>
+    </div>
+    <script>
+      function onClick() {
+        localStorage.setItem(
+          "username",
+          document.getElementById("input").value
+        );
+      }
+    </script>
+  </body>
+</html>

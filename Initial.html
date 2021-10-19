@@ -1,0 +1,80 @@
+<html>
+    <!-- Code by Me -->
+  <head>
+  <title>Welcome</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" type="text/css" href="static/mazing.css" />
+  </head>
+  <body>
+    <div
+      class="border border-left-0 border-right-0 border-top-0 p-4 text-center w-100"
+    >
+      <h3>Welcome to the Maze Game</h3>
+    </div>
+    <div id="links">
+      <div class="text-center pt-4">
+        <h4 id="username">Hello</h4>
+        <h4>Do you want to?</h4>
+      </div>
+      <div class="d-flex flex-column text-center">
+        <a href="Maze.html" class="p-4" id="resume">
+          <button class="btn btn-info">Resume the Game</button>
+        </a>
+        <a href="Maze.html" onclick="onClick()" class="p-4">
+          <button class="btn btn-info" id="restart">Restart the Game</button>
+        </a>
+        <a href="Index.html" class="p-4">
+          <button class="btn btn-info" onclick="onChangeUser()">
+            Change User
+          </button>
+        </a>
+        <a href="Rules.html" class="p-4">
+          <button class="btn btn-info">Rules</button>
+        </a>
+      </div>
+    </div>
+    <div class="d-none text-center pt-4" id="login">
+      User is not specified, please mention the user by clicking here
+      <a href="Index.html" class="text-decoration-none pl-4"
+        ><button class="btn btn-info text-decoration-none">
+          Click here to login
+        </button></a
+      >
+    </div>
+  </body>
+  <script>
+    const usernames =
+      localStorage.getItem("usernames") != null
+        ? JSON.parse(localStorage.getItem("usernames"))
+        : {};
+    const username = localStorage.getItem("username");
+
+    function onClick() {
+      usernames[username] = 1;
+      localStorage.setItem("usernames", JSON.stringify(usernames));
+      localStorage.setItem("current_score", 0);
+    }
+    function onChangeUser() {
+      localStorage.setItem("username", "");
+    }
+
+    if (username != null && username != "") {
+      document.getElementById("links").classList.add("d-block");
+      document.getElementById("login").classList.add("d-none");
+      document.getElementById("username").innerHTML += username;
+    } else {
+      document.getElementById("login").classList.add("d-block");
+      document.getElementById("links").classList.add("d-none");
+    }
+    if (usernames[username] == null) {
+      document.getElementById("resume").classList.add("d-none");
+      document.getElementById("restart").innerHTML = "Start the Game";
+    }
+  </script>
+</html>
